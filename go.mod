@@ -1,4 +1,4 @@
-module github.com/govwa
+module github.com/MFahrurR/govwa
 
 go 1.15
 

@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/govwa/user/session"
-	"github.com/govwa/util/config"
+	"github.com/MFahrurR/govwa/user/session"
+	"github.com/MFahrurR/govwa/util/config"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -27,12 +27,12 @@ func (this *Class) AuthCheck(h httprouter.Handle) httprouter.Handle {
 	var sess = session.New()
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		if !sess.IsLoggedIn(r) {
-			log.Println(sess)
 			redirect := config.Fullurl + "login" + "?sessid=" + "true"
 			http.Redirect(w, r, redirect, http.StatusSeeOther)
 			return
 		}
 
+		log.Println(sess)
 		h(w, r, ps)
 	}
 }

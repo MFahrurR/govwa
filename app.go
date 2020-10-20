@@ -6,16 +6,16 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 
-	"github.com/govwa/setting"
-	"github.com/govwa/setup"
-	"github.com/govwa/user"
-	"github.com/govwa/util"
-	"github.com/govwa/util/config"
-	"github.com/govwa/util/middleware"
-	"github.com/govwa/vulnerability/csa"
-	"github.com/govwa/vulnerability/idor"
-	"github.com/govwa/vulnerability/sqli"
-	"github.com/govwa/vulnerability/xss"
+	"github.com/MFahrurR/govwa/setting"
+	"github.com/MFahrurR/govwa/setup"
+	"github.com/MFahrurR/govwa/user"
+	"github.com/MFahrurR/govwa/util"
+	"github.com/MFahrurR/govwa/util/config"
+	"github.com/MFahrurR/govwa/util/middleware"
+	"github.com/MFahrurR/govwa/vulnerability/csa"
+	"github.com/MFahrurR/govwa/vulnerability/idor"
+	"github.com/MFahrurR/govwa/vulnerability/sqli"
+	"github.com/MFahrurR/govwa/vulnerability/xss"
 )
 
 const (

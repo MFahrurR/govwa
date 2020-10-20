@@ -10,11 +10,11 @@ import (
 	"encoding/hex"
 	"html/template"
 
-	"github.com/govwa/util"
-	"github.com/govwa/util/config"
-	"github.com/govwa/user/session"
-	"github.com/govwa/util/database"
-	"github.com/govwa/util/middleware"
+	"github.com/MFahrurR/govwa/util"
+	"github.com/MFahrurR/govwa/util/config"
+	"github.com/MFahrurR/govwa/user/session"
+	"github.com/MFahrurR/govwa/util/database"
+	"github.com/MFahrurR/govwa/util/middleware"
 
 	"github.com/julienschmidt/httprouter"
 )

@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/sessions"
-	"github.com/govwa/util/config"
+	"github.com/MFahrurR/govwa/util/config"
 )
 
 type Self struct{}
