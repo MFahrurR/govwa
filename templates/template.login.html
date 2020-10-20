@@ -38,6 +38,12 @@
                             </fieldset>
                         </form>
                     </div>
+                    <div>
+                        <b>Site URL:</b> <input type="text" id="siteURL" value="site..."/></span><br>
+                        <b>Site URL:</b> <input type="text" id="siteURL2" value="site..."/></span><br>
+                    </div>
+                    <button onclick="myFunction()">Get message value</button>
+                    <button onclick="myFunction2()">Get message value 2</button>
                 </div>
             </div>
         </div>
@@ -47,6 +53,19 @@
     $(document).ready(function() {
         $("#message").delay(2000).fadeOut();
     });
+
+    function myFunction() {
+        var xmlHttp = jQuery.parseXML('<?xml version="1.0" encoding="utf-8"?><config><siteURL>http://localhost/</siteURL></config>');
+        var xmlDoc;
+        xmlDoc = xmlHttp.documentElement;
+        $("#siteURL").val(xmlDoc.getElementsByTagName("siteURL")[0].childNodes[0].nodeValue);
+    }
+
+    function myFunction2() {
+       
+        var xmlHttp = jQuery.parseXML('<?xml version="1.0" encoding="utf-8"?><config><siteURL>'+ $("#siteURL2").val()+'</siteURL></config>');
+        console.log(xmlHttp)
+    }
 </script>
 
 </html>
