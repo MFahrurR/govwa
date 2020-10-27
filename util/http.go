@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/govwa/util/config"
+	"github.com/MFahrurR/govwa/util/config"
 )
 
 func Redirect(w http.ResponseWriter, r *http.Request, location string, code int){

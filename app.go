@@ -6,16 +6,16 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 
-	"github.com/govwa/setting"
-	"github.com/govwa/setup"
-	"github.com/govwa/user"
-	"github.com/govwa/util"
-	"github.com/govwa/util/config"
-	"github.com/govwa/util/middleware"
-	"github.com/govwa/vulnerability/csa"
-	"github.com/govwa/vulnerability/idor"
-	"github.com/govwa/vulnerability/sqli"
-	"github.com/govwa/vulnerability/xss"
+	"github.com/MFahrurR/govwa/setting"
+	"github.com/MFahrurR/govwa/setup"
+	"github.com/MFahrurR/govwa/user"
+	"github.com/MFahrurR/govwa/util"
+	"github.com/MFahrurR/govwa/util/config"
+	"github.com/MFahrurR/govwa/util/middleware"
+	"github.com/MFahrurR/govwa/vulnerability/csa"
+	"github.com/MFahrurR/govwa/vulnerability/idor"
+	"github.com/MFahrurR/govwa/vulnerability/sqli"
+	"github.com/MFahrurR/govwa/vulnerability/xss"
 )
 
 const (
@@ -42,6 +42,17 @@ func indexHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	util.SafeRender(w, r, "template.index", data)
 }
 
+//index and set cookie
+func adminHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+
+	util.SetCookieLevel(w, r, "low") //set cookie Level default to low
+
+	data := make(map[string]interface{})
+	data["title"] = "Index"
+
+	util.SafeRender(w, r, "template.index", data)
+}
+
 func main() {
 
 	fmt.Println(banner)
@@ -59,6 +70,7 @@ func main() {
 	router.ServeFiles("/public/*filepath", http.Dir("public/"))
 	router.GET("/", mw.LoggingMiddleware(mw.AuthCheck(indexHandler)))
 	router.GET("/index", mw.LoggingMiddleware(mw.DetectSQLMap(mw.AuthCheck(indexHandler))))
+	router.GET("/wp-admin", mw.LoggingMiddleware(mw.DetectSQLMap(mw.AuthCheck(adminHandler))))
 
 	user.SetRouter(router)
 	sqlI.SetRouter(router)
